@@ -9,6 +9,7 @@ namespace BikeExchange.Extensions
     {
         public static string GetPropertyValue<T>(this T item, string propertyName)
         {
+            // do reflection on the item
             return item.GetType().GetProperty(propertyName).GetValue(item, null).ToString();
 
         }
