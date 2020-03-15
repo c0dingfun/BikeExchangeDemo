@@ -33,6 +33,9 @@
                     <td>
                         @Html.DisplayFor(m => item.Name)
                     </td>
+                    <partial name="_EditDeletePartial" model="item.Id"/>
+
+                    <!-- HH: replaced by the partial view -- _EditDeletePartial --, but want to preserve the history
                     @*<td class="text-right"> Edit | Delete </td>*@
 
                     <td class="text-right">
@@ -113,6 +116,7 @@
                         </form>
                         </div>
                     </td>
+                    -->
                 </tr>
             }
         </table>

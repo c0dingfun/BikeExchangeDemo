@@ -40,8 +40,13 @@
                     <td>
                         @Html.DisplayFor(m => item.Name)    @*Model  (Model S)*@
                     </td>
-                    @*<td class="text-right"> Edit | Delete </td>*@
 
+                    <partial name="_EditDeletePartial" model="item.Id"/>
+
+                    <!-- HH: replaced with the _EditDeletePartial view, but want to preserve the history here
+
+                    @*<td class="text-right"> Edit | Delete </td>*@
+                        
                     <td class="text-right">
                         <div class="btn-group" role="group">
                             @*<a type="button" class="btn btn-primary" href="@Url.Action("Edit"+"/" + item.Id)">Edit</a>*@
@@ -121,6 +126,7 @@
                             </form>
                         </div>
                     </td>
+                    -->
                 </tr>
             }
         </table>

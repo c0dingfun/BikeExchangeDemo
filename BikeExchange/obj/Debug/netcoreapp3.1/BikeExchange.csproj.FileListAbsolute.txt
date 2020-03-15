@@ -144,3 +144,4 @@ C:\GitRepos\BikeExchangeDemo\BikeExchange\obj\Debug\netcoreapp3.1\Razor\Views\Mo
 C:\GitRepos\BikeExchangeDemo\BikeExchange\obj\Debug\netcoreapp3.1\Razor\Views\Model\Create.cshtml.g.cs
 C:\GitRepos\BikeExchangeDemo\BikeExchange\obj\Debug\netcoreapp3.1\BikeExchange.csprojAssemblyReference.cache
 C:\GitRepos\BikeExchangeDemo\BikeExchange\obj\Debug\netcoreapp3.1\Razor\Views\Model\Edit.cshtml.g.cs
+C:\GitRepos\BikeExchangeDemo\BikeExchange\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditDeletePartial.cshtml.g.cs

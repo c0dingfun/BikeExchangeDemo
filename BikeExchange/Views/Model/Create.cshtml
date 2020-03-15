@@ -1,4 +1,5 @@
 ﻿@model BikeExchange.Models.ViewModels.ModelViewModel
+@using BikeExchange.Extensions
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,7 +14,8 @@
         </div>
 
         <div class="col-4">
-            <select asp-for="Model.MakeFK" asp-items="Model.MakeList(Model.Makes)" class="form-control"></select>
+            @*<select asp-for="Model.MakeFK" asp-items="Model.MakeList(Model.Makes)" class="form-control"></select>*@
+            <select asp-for="Model.MakeFK" asp-items="Model.Makes.ToSelectListItems()" class="form-control"></select>
         </div>
     </div>
 
