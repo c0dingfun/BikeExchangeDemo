@@ -6,6 +6,7 @@ using BikeExchange.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +31,12 @@ namespace BikeExchange
             // HH: Add the BikeDbContext and specify its ConnectionString 
             services.AddDbContext<BikeDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("BikeDbConnection")));
+
+            // HH: for identity
+            services.AddDefaultIdentity<IdentityUser>()
+                    .AddEntityFrameworkStores<BikeDbContext>();
+
+            services.AddMvc();  // HH: for identity
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +54,7 @@ namespace BikeExchange
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseRouting();
 
@@ -54,6 +62,10 @@ namespace BikeExchange
 
             app.UseEndpoints(endpoints =>
             {
+                // HH: for idenity
+                endpoints.MapControllers();
+                endpoints.MapRazorPages();
+
                 //endpoints.MapControllerRoute(
                 //    name: "byYearMoth",
                 //    pattern: "make/bikes/{year:int:length(4)}/{month:int:range(1,12)}",
