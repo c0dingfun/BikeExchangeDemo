@@ -1,0 +1,129 @@
+﻿@model IEnumerable<BikeExchange.Models.Model>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h1>Index</h1>*@
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Model of Vehicle</h2>
+    </div>
+    <div class="col-6 text-right">
+        @*<a class="btn btn-info" asp-action="Create">Add New Make</a>*@
+        <a class="btn btn-info" asp-action="Create">
+            <i class="fas fa-motorcycle"></i> &nbsp; Add New Model
+        </a>
+    </div>
+    <br />
+    <div class="col-12">
+        <table class="table table-striped border">
+            <tr class="table-info">
+                <th>
+                    @Html.DisplayNameFor(m => m.Make)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Name)
+                </th>
+                <th> </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Make.Name)   @* Make (Manufacture - Tesla)*@
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Name)    @*Model  (Model S)*@
+                    </td>
+                    @*<td class="text-right"> Edit | Delete </td>*@
+
+                    <td class="text-right">
+                        <div class="btn-group" role="group">
+                            @*<a type="button" class="btn btn-primary" href="@Url.Action("Edit"+"/" + item.Id)">Edit</a>*@
+                            @*
+                                The above line for some reason does not work!!!!
+                                So, switching to use a form submit (GET)
+                            *@
+
+                            @*Original using input*@
+
+                            @*<input type="submit"
+                                class="btn btn-primary rounded-0"
+                                asp-action="Edit"
+                                asp-route-id="@item.Id"
+                                value="Edit" />*@
+                            @*
+                                In order to use Awesome font, we can not use <input> tag, because
+                                there is no way to put "<i class="far fa-edit"></i>" in the input tag.
+                                So, use <button> instead.
+                            *@
+
+                            <form method="get" action="Edit">
+                                <button class="btn btn-primary"
+                                        type="submit"
+                                        asp-action="Edit"
+                                        asp-route-id="@item.Id">
+
+                                    <i class="far fa-edit"></i>
+
+                                </button>
+                            </form>
+
+
+                            @*placeholder*@
+                            @*<a type="button" class="btn btn-primary" href="@Url.Action("Delete"+ "/"+item.Id)">Delete</a>*@
+
+
+                            @*using GET to do Delete---no good, just for demonstration*@
+                            @*<a type="button" class="btn btn-primary" href="@Url.Action("Delete/".ToString() + item.Id)">Delete</a>*@
+
+                            <form method="post" action="Delete">
+                                @*<input onclick="if (!confirm('Are you sure?')) { return false }"
+                                    type="submit"
+                                    class="btn btn-danger rounded-0"
+                                    asp-action="Delete"
+                                    asp-route-id="@item.Id"
+                                    value="Delete" />*@
+
+                                <button class="btn btn-danger rounded-0"
+                                        type="submit"
+                                        onclick="if (!confirm('Are you sure?')) { return false }"
+                                        asp-action="Delete"
+                                        asp-route-id="@item.Id">
+
+                                    <i class="far fa-trash-alt"></i>
+
+                                </button>
+
+                                @*
+                                    because the post need to know to which url it posts, both
+                                    asp-action and asp-route-id are needed to generate the right url
+                                *@
+
+                                @*
+                                    The Generated Form Looks like:
+                                    <form method="post" action="Delete">
+                                        <input onclick="if (!confirm('Are you sure?')) { return false }"
+                                            type="submit" class="btn btn-danger rounded-0" value="Delete"
+                                            formaction="/Make/Delete/6" />
+                                    </form>
+
+                                    The formaction Specifies the URL of the file that will process the input
+                                    control when the form is submitted (for type="submit" and type="image")
+                                *@
+
+
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
