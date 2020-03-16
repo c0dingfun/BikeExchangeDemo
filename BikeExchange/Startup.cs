@@ -33,8 +33,14 @@ namespace BikeExchange
                 options.UseSqlServer(Configuration.GetConnectionString("BikeDbConnection")));
 
             // HH: for identity
-            services.AddDefaultIdentity<IdentityUser>()
-                    .AddEntityFrameworkStores<BikeDbContext>();
+            //services.AddDefaultIdentity<IdentityUser>()
+            //        .AddEntityFrameworkStores<BikeDbContext>();
+
+            // HH: for enhancing Identity
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                    .AddEntityFrameworkStores<BikeDbContext>()
+                    .AddDefaultUI()
+                    .AddDefaultTokenProviders();
 
             services.AddMvc();  // HH: for identity
         }

@@ -4,14 +4,16 @@ using BikeExchange.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BikeExchange.Migrations
 {
     [DbContext(typeof(BikeDbContext))]
-    partial class BikeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200315224623_AddExtraPhoneAndFlag")]
+    partial class AddExtraPhoneAndFlag
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
