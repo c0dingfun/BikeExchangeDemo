@@ -62,6 +62,10 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" asp-controller="Make" asp-action="Index">Makes</a>
                             <a class="dropdown-item" asp-controller="Model" asp-action="Index">Models</a>
+                            @if(User.IsInRole("Admin"))
+                            { 
+                                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Add User</a>
+                            }
                             @*<a class="dropdown-item" href="#">Models</a>*@
                             @*<div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>*@
