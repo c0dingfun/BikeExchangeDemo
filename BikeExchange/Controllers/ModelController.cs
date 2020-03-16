@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using BikeExchange.Data;
 using BikeExchange.Models;
 using BikeExchange.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BikeExchange.Controllers
 {
+    [Authorize(Roles = "Admin, Executive")]
     public class ModelController : Controller
     {
         private readonly BikeDbContext mDbContext;

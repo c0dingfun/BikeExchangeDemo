@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BikeExchange.Models;
 using BikeExchange.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BikeExchange.Controllers
 {
+    [Authorize(Roles ="Admin, Executive")]
     public class MakeController : Controller
     {
         //// make/bikes
