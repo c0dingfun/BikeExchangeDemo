@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using BikeExchange.Helpers
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -50,7 +51,8 @@
 
 
                     @*HH: must be in Admin or Execute role to see the drop down*@
-                    @if (User.IsInRole("Admin") || User.IsInRole("Executive"))
+                    @*@if (User.IsInRole("Admin") || User.IsInRole("Executive"))*@
+                    @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Executive))
                     { 
                     @*<li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
@@ -62,7 +64,8 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" asp-controller="Make" asp-action="Index">Makes</a>
                             <a class="dropdown-item" asp-controller="Model" asp-action="Index">Models</a>
-                            @if(User.IsInRole("Admin"))
+                            @*@if(User.IsInRole("Admin"))*@
+                            @if(User.IsInRole(Roles.Admin))
                             { 
                                 <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Add User</a>
                             }
